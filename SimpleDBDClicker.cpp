@@ -64,7 +64,7 @@ int main()
         for (int j = 60; j > 0; j--)
         {
             system("cls");
-            std::cout << "Sleep left: " << j << " min" << std::endl;
+            std::cout << "Sleep left: " << j << " sec" << std::endl;
             Sleep(ToSec(1));
         }
     }
