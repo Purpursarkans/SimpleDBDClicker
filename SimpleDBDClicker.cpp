@@ -10,6 +10,7 @@ static int CONTINUE_Y = 715;
 void LClickOnCoord(int X, int Y)
 {
     SetCursorPos(X, Y);
+    Sleep(100);
     mouse_event(MOUSEEVENTF_LEFTDOWN, X, Y, 0, 0);
     mouse_event(MOUSEEVENTF_LEFTUP, X, Y, 0, 0);
 }
@@ -58,7 +59,7 @@ int main()
         Sleep(ToSec(1));
 
         LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
-        Sleep(ToSec(1));
+        Sleep(ToSec(2));
         LClickOnCoord(CONTINUE_X, CONTINUE_Y);
         Sleep(ToMin(1));
     }
