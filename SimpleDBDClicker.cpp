@@ -34,7 +34,7 @@ void FindColor(int x, int y, int r, int g, int b, HDC DC)
             Sleep(ToSec(1));
         }
     }
-    Beep(100, 100);
+    Beep(100, 200);
     Sleep(ToSec(3));
 }
 
