@@ -49,7 +49,7 @@ int main()
 
         for(int j = 16; j > 0; j--)
         {
-            for(int n = 60; n > 0; n--)
+            for(int n = 59; n > 0; n--)
             {
                 system("cls");
                 std::cout << "done times: " << i << std::endl;
