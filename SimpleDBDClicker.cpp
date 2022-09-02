@@ -50,8 +50,8 @@ int main()
         {
             system("cls");
             std::cout << "done times: " << i << std::endl;
-            Sleep(ToMin(1));
             std::cout << "Sleep left: " << j << " min" << std::endl;
+            Sleep(ToMin(1));
         }
 
         SwitchToThisWindow(GameHWND, false);
