@@ -29,7 +29,6 @@ int main()
     
     HWND GameHWND = NULL;
     GameHWND = FindWindowA("UnrealWindow", NULL);
-    //SetForegroundWindow(GameHWND);
 
     MoveWindow(GetConsoleWindow(), 0, 50, 255, 100, TRUE);
     SetWindowPos(GetConsoleWindow(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
