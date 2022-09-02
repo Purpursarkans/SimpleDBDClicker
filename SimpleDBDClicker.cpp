@@ -47,7 +47,7 @@ int main()
         Sleep(ToSec(1));
         LClickOnCoord(CONTINUE_X, CONTINUE_Y);
 
-        for(int j = 18; j > 0; j--)
+        for(int j = 16; j > 0; j--)
         {
             for(int n = 60; n > 0; n--)
             {
