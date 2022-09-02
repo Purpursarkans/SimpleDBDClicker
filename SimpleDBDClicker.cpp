@@ -58,11 +58,7 @@ int main()
         Sleep(ToSec(1));
 
         LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
-        Sleep(ToSec(3));
-
-        SwitchToThisWindow(GameHWND, false);
         Sleep(ToSec(1));
-
         LClickOnCoord(CONTINUE_X, CONTINUE_Y);
         Sleep(ToMin(1));
     }
