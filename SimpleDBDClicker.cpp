@@ -49,11 +49,18 @@ int main()
 
         for(int j = 18; j > 0; j--)
         {
-            system("cls");
-            std::cout << "done times: " << i << std::endl;
-            std::cout << "Sleep left: " << j << " min" << std::endl;
-            Sleep(ToMin(1));
+            for(int n = 60; n > 0; n--)
+            {
+                system("cls");
+                std::cout << "done times: " << i << std::endl;
+                std::cout << "Sleep left: " << j << ":" << n << " min" << std::endl;
+                Sleep(ToSec(1));
+            }
+            
         }
+
+        Beep(100,100);
+        Sleep(ToSec(3));
 
         SwitchToThisWindow(GameHWND, false);
         Sleep(ToSec(3));
