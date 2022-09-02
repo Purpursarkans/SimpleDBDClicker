@@ -44,15 +44,25 @@ int main()
     {
         SwitchToThisWindow(GameHWND, false);
         Sleep(ToSec(1));
-        std::cout << "done times: " << i << std::endl;
         LClickOnCoord(CONTINUE_X, CONTINUE_Y);
-        Sleep(ToMin(18));
+
+        for(int j = 18; j > 0; j--)
+        {
+            system("cls");
+            std::cout << "done times: " << i << std::endl;
+            Sleep(ToMin(1));
+            std::cout << "Sleep left: " << j << " min" << std::endl;
+        }
+
         SwitchToThisWindow(GameHWND, false);
         Sleep(ToSec(1));
+
         LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
         Sleep(ToSec(3));
+
         SwitchToThisWindow(GameHWND, false);
         Sleep(ToSec(1));
+
         LClickOnCoord(CONTINUE_X, CONTINUE_Y);
         Sleep(ToMin(1));
     }
