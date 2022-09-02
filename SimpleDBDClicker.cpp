@@ -56,12 +56,17 @@ int main()
         }
 
         SwitchToThisWindow(GameHWND, false);
-        Sleep(ToSec(1));
+        Sleep(ToSec(3));
 
         LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
         Sleep(ToSec(2));
         LClickOnCoord(CONTINUE_X, CONTINUE_Y);
-        Sleep(ToMin(1));
+        for (int j = 60; j > 0; j--)
+        {
+            system("cls");
+            std::cout << "Sleep left: " << j << " min" << std::endl;
+            Sleep(ToSec(1));
+        }
     }
     system("pause");
 }
