@@ -61,7 +61,7 @@ int main()
         LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
         Sleep(ToSec(2));
         LClickOnCoord(CONTINUE_X, CONTINUE_Y);
-        for (int j = 60; j > 0; j--)
+        for (int j = 30; j > 0; j--)
         {
             system("cls");
             std::cout << "Sleep left: " << j << " sec" << std::endl;
