@@ -12,7 +12,8 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-static",
                 "-Os",
-                "-s"
+                "-s",
+                "-lgdi32"
             ],
             "options": {
                 "cwd": "D:\\msys64\\mingw64\\bin"
