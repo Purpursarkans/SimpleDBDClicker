@@ -74,10 +74,14 @@ int main()
 
     for (int i = 0;; i++)
     {
-        FindColor(1290, 714, 100, 10, 10, GameDC);
+        FindColor(1014, 446, 100, 10, 10, GameDC);
         SwitchToThisWindow(GameHWND, false);
         Sleep(ToSec(1));
         LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
+        Sleep(ToSec(1));
+
+        FindColor(1290, 714, 100, 10, 10, GameDC);
+        SwitchToThisWindow(GameHWND, false);
         Sleep(ToSec(1));
         LClickOnCoord(CONTINUE_X, CONTINUE_Y);
         Sleep(ToSec(1));
