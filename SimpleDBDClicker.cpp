@@ -17,7 +17,7 @@ struct RGBPixel
     int b;
 };
 
-void FindColor(int x, int y, int r, int g, int b, HDC DC)
+void FindColor(int x, int y, int r, int g, int b, HDC DC,int j)
 {
     COLORREF color;
     RGBPixel Pixel;
@@ -25,11 +25,12 @@ void FindColor(int x, int y, int r, int g, int b, HDC DC)
     {
         color = GetPixel(DC, x, y);
         Pixel = {GetRValue(color), GetGValue(color), GetBValue(color)};
-        std::cout << int(GetRValue(color)) << " " << int(GetGValue(color)) << " " << int(GetBValue(color)) << std::endl;
+        std::cout << Pixel.r << " " << Pixel.g << " " << Pixel.b << std::endl;
         Sleep(ToSec(1));
         for(int i = 15; i > 0; i--)
         {
             system("cls");
+            std::cout << "done: " << j << " time" << std::endl;
             std::cout << "time remaining: " << i << " sec" << std::endl;
             Sleep(ToSec(1));
         }
@@ -72,9 +73,9 @@ int main()
     std::cout << "Sleep 5 sec" << std::endl;
     Sleep(ToSec(5));
 
-    for (int i = 1;; i++)
+    for (int i = 0;; i++)
     {
-        FindColor(1290, 714, 100, 10, 10, GameDC);
+        FindColor(1290, 714, 100, 10, 10, GameDC, i);
         SwitchToThisWindow(GameHWND, false);
         Sleep(ToSec(1));
         LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
