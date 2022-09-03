@@ -73,12 +73,15 @@ int main()
     MoveWindow(GetConsoleWindow(), 0, 50, 255, 100, TRUE);
     SetWindowPos(GetConsoleWindow(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 
+    std::cout << "Sleep 3 sec" << std::endl;
+    Sleep(ToSec(3));
+
     POINT P;
     GetCursorPos(&P);
     std::cout << "Cursor pos: x:" << P.x << " y:" << P.y << std::endl;
 
-    std::cout << "Sleep 5 sec" << std::endl;
-    Sleep(ToSec(5));
+    std::cout << "Sleep 3 sec" << std::endl;
+    Sleep(ToSec(3));
 
     for (int i = 0;; i++)
     {
