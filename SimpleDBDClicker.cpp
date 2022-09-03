@@ -91,8 +91,6 @@ int main()
             Sleep(ToSec(1));
             LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
             Sleep(ToSec(1));
-            LClickOnCoord(1014,446);
-            Sleep(ToMin(15));
         }
 
         if(FindColor(1290, 714, 100, 10, 10, GameDC))
