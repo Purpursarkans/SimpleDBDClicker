@@ -17,25 +17,33 @@ struct RGBPixel
     int b;
 };
 
-void FindColor(int x, int y, int r, int g, int b, HDC DC)
+bool FindColor(int x, int y, int r, int g, int b, HDC DC)
 {
     COLORREF color;
     RGBPixel Pixel;
-    while (!(Pixel.r > r && Pixel.g < g && Pixel.b < b))
-    {
+    //while (!(Pixel.r > r && Pixel.g < g && Pixel.b < b))
+    //{
         color = GetPixel(DC, x, y);
         Pixel = {GetRValue(color), GetGValue(color), GetBValue(color)};
         std::cout << Pixel.r << " " << Pixel.g << " " << Pixel.b << std::endl;
         Sleep(ToSec(1));
-        for(int i = 15; i > 0; i--)
+        for(int i = 7; i > 0; i--)
         {
             system("cls");
             std::cout << "time remaining: " << i << " sec" << std::endl;
             Sleep(ToSec(1));
         }
+    //}
+    if(Pixel.r > r && Pixel.g < g && Pixel.b < b)
+    {
+        Beep(100, 200);
+        Sleep(ToSec(3));
+        return true;
     }
-    Beep(100, 200);
-    Sleep(ToSec(3));
+    else
+    {
+        return false;
+    }
 }
 
 void LClickOnCoord(int X, int Y)
@@ -74,17 +82,24 @@ int main()
 
     for (int i = 0;; i++)
     {
-        FindColor(1014, 446, 100, 10, 10, GameDC);
-        SwitchToThisWindow(GameHWND, false);
-        Sleep(ToSec(1));
-        LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
-        Sleep(ToSec(1));
+        if(FindColor(1014, 446, 100, 10, 10, GameDC))
+        {
+            SwitchToThisWindow(GameHWND, false);
+            Sleep(ToSec(1));
+            LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
+            Sleep(ToSec(1));
+            LClickOnCoord(1014,446);
+            Sleep(ToMin(15));
+        }
 
-        FindColor(1290, 714, 100, 10, 10, GameDC);
-        SwitchToThisWindow(GameHWND, false);
-        Sleep(ToSec(1));
-        LClickOnCoord(CONTINUE_X, CONTINUE_Y);
-        Sleep(ToSec(1));
+        if(FindColor(1290, 714, 100, 10, 10, GameDC))
+        {
+            SwitchToThisWindow(GameHWND, false);
+            Sleep(ToSec(1));
+            LClickOnCoord(CONTINUE_X, CONTINUE_Y);
+            Sleep(ToSec(1));
+        }
+        
     }
     system("pause");
 }
