@@ -7,6 +7,10 @@ static int HOST_ERROR_CLICK_Y = 450;
 static int CONTINUE_X = 1290;
 static int CONTINUE_Y = 714;
 
+static int RED = 150;
+static int GREEN = 10;
+static int BLUE = 10;
+
 int ToSec(int sec);
 int ToMin(int min);
 
@@ -21,20 +25,18 @@ bool FindColor(int x, int y, int r, int g, int b, HDC DC)
 {
     COLORREF color;
     RGBPixel Pixel;
-    //while (!(Pixel.r > r && Pixel.g < g && Pixel.b < b))
-    //{
-        for (int i = 7; i > 0; i--)
-        {
-            system("cls");
-            std::cout << "time remaining: " << i << " sec" << std::endl;
-            Sleep(ToSec(1));
-        }
-        color = GetPixel(DC, x, y);
-        Pixel = {GetRValue(color), GetGValue(color), GetBValue(color)};
-        std::cout << Pixel.r << " " << Pixel.g << " " << Pixel.b << std::endl;
+
+    for (int i = 7; i > 0; i--)
+    {
+        system("cls");
+        std::cout << "time remaining: " << i << " sec" << std::endl;
         Sleep(ToSec(1));
-        
-    //}
+    }
+    color = GetPixel(DC, x, y);
+    Pixel = {GetRValue(color), GetGValue(color), GetBValue(color)};
+    std::cout << Pixel.r << " " << Pixel.g << " " << Pixel.b << std::endl;
+    Sleep(ToSec(1));
+
     if(Pixel.r > r && Pixel.g < g && Pixel.b < b)
     {
         Beep(100, 200);
@@ -92,14 +94,14 @@ int main()
 
     for (int i = 0;; i++)
     {
-        if (FindColor(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y, 100, 10, 10, GameDC))
+        if (FindColor(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y, RED, GREEN, BLUE, GameDC))
         {
             SwitchToThisWindow(GameHWND, true);
             Sleep(ToSec(1));
             LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
             Sleep(ToSec(1));
         }
-        if (FindColor(CONTINUE_X, CONTINUE_Y, 100, 10, 10, GameDC))
+        if (FindColor(CONTINUE_X, CONTINUE_Y, RED, GREEN, BLUE, GameDC))
         {
             SwitchToThisWindow(GameHWND, true);
             Sleep(ToSec(1));
