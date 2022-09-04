@@ -67,6 +67,9 @@ int ToMin(int min)
 
 int main()
 {
+    MoveWindow(GetConsoleWindow(), 0, 50, 255, 100, TRUE);
+    SetWindowPos(GetConsoleWindow(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+
     HWND GameHWND = NULL;
     while (GameHWND == NULL)
     {
@@ -76,9 +79,6 @@ int main()
     }
     std::cout << "Found successful" << std::endl;
     HDC GameDC = GetDC(GameHWND);
-
-    MoveWindow(GetConsoleWindow(), 0, 50, 255, 100, TRUE);
-    SetWindowPos(GetConsoleWindow(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 
     std::cout << "Sleep 3 sec" << std::endl;
     Sleep(ToSec(3));
