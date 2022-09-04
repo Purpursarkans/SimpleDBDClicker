@@ -1,11 +1,11 @@
 #include <iostream>
 #include <windows.h>
 
-static int HOST_ERROR_CLICK_X = 987;
-static int HOST_ERROR_CLICK_Y = 449;
+static int HOST_ERROR_CLICK_X = 1014;
+static int HOST_ERROR_CLICK_Y = 450;
 
-static int CONTINUE_X = 1226;
-static int CONTINUE_Y = 715;
+static int CONTINUE_X = 1290;
+static int CONTINUE_Y = 714;
 
 int ToSec(int sec);
 int ToMin(int min);
@@ -68,7 +68,13 @@ int ToMin(int min)
 int main()
 {
     HWND GameHWND = NULL;
-    GameHWND = FindWindowA("UnrealWindow", NULL);
+    while (GameHWND == NULL)
+    {
+        std::cout << "Search UnrealWindow(DBD)" << std::endl;
+        GameHWND = FindWindowA("UnrealWindow", NULL);
+        Sleep(ToSec(1));
+    }
+    std::cout << "Found successful" << std::endl;
     HDC GameDC = GetDC(GameHWND);
 
     MoveWindow(GetConsoleWindow(), 0, 50, 255, 100, TRUE);
@@ -86,14 +92,14 @@ int main()
 
     for (int i = 0;; i++)
     {
-        if (FindColor(1014, 450, 100, 10, 10, GameDC))
+        if (FindColor(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y, 100, 10, 10, GameDC))
         {
             SwitchToThisWindow(GameHWND, true);
             Sleep(ToSec(1));
             LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
             Sleep(ToSec(1));
         }
-        if (FindColor(1290, 714, 100, 10, 10, GameDC))
+        if (FindColor(CONTINUE_X, CONTINUE_Y, 100, 10, 10, GameDC))
         {
             SwitchToThisWindow(GameHWND, true);
             Sleep(ToSec(1));
