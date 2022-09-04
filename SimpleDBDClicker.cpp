@@ -7,7 +7,7 @@ static int HOST_ERROR_CLICK_Y = 450;
 static int CONTINUE_X = 1290;
 static int CONTINUE_Y = 714;
 
-static int RED = 120;
+static int RED = 100;
 static int GREEN = 10;
 static int BLUE = 10;
 
