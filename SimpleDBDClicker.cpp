@@ -11,6 +11,11 @@ static int RED = 150;
 static int GREEN = 10;
 static int BLUE = 10;
 
+static int MOVE_CONSOLE_X = 0;
+static int MOVE_CONSOLE_Y = 50;
+static int CONSOLE_WIDTH = 255;
+static int CONSOLE_HEIGHT = 100;
+
 int ToSec(int sec);
 int ToMin(int min);
 
@@ -21,7 +26,7 @@ struct RGBPixel
     int b;
 };
 
-bool FindColor(int x, int y, int r, int g, int b, HDC DC)
+bool FindColor(int x, int y, int r, int g, int b, HDC hDC)
 {
     COLORREF color;
     RGBPixel Pixel;
@@ -32,7 +37,7 @@ bool FindColor(int x, int y, int r, int g, int b, HDC DC)
         std::cout << "time remaining: " << i << " sec" << std::endl;
         Sleep(ToSec(1));
     }
-    color = GetPixel(DC, x, y);
+    color = GetPixel(hDC, x, y);
     Pixel = {GetRValue(color), GetGValue(color), GetBValue(color)};
     std::cout << Pixel.r << " " << Pixel.g << " " << Pixel.b << std::endl;
     Sleep(ToSec(1));
@@ -69,7 +74,7 @@ int ToMin(int min)
 
 int main()
 {
-    MoveWindow(GetConsoleWindow(), 0, 50, 255, 100, TRUE);
+    MoveWindow(GetConsoleWindow(), MOVE_CONSOLE_X, MOVE_CONSOLE_Y, CONSOLE_WIDTH, CONSOLE_HEIGHT, TRUE);
     SetWindowPos(GetConsoleWindow(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 
     HWND GameHWND = NULL;
@@ -92,7 +97,7 @@ int main()
     std::cout << "Sleep 3 sec" << std::endl;
     Sleep(ToSec(3));
 
-    for (int i = 0;; i++)
+    for (;;)
     {
         if (FindColor(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y, RED, GREEN, BLUE, GameDC))
         {
