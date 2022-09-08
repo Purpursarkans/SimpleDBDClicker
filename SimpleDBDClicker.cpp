@@ -82,7 +82,10 @@ int main()
     {
         std::cout << "Search UnrealWindow(DBD)" << std::endl;
         GameHWND = FindWindowA("UnrealWindow", NULL);
-        Sleep(ToSec(1));
+        if (GameHWND == NULL)
+        {
+            Sleep(ToSec(1));
+        }
     }
     std::cout << "Found successful" << std::endl;
     HDC GameDC = GetDC(GameHWND);
