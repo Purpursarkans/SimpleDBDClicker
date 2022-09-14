@@ -1,20 +1,20 @@
 #include <iostream>
 #include <windows.h>
 
-static int HOST_ERROR_CLICK_X = 1014;
-static int HOST_ERROR_CLICK_Y = 450;
+const int HOST_ERROR_CLICK_X = 1014;
+const int HOST_ERROR_CLICK_Y = 450;
 
-static int CONTINUE_X = 1290;
-static int CONTINUE_Y = 714;
+const int CONTINUE_X = 1290;
+const int CONTINUE_Y = 714;
 
-static int RED = 100;
-static int GREEN = 10;
-static int BLUE = 10;
+const int RED = 100;
+const int GREEN = 10;
+const int BLUE = 10;
 
-static int MOVE_CONSOLE_X = 0;
-static int MOVE_CONSOLE_Y = 50;
-static int CONSOLE_WIDTH = 255;
-static int CONSOLE_HEIGHT = 100;
+const int MOVE_CONSOLE_X = 0;
+const int MOVE_CONSOLE_Y = 50;
+const int CONSOLE_WIDTH = 255;
+const int CONSOLE_HEIGHT = 100;
 
 int ToSec(int sec);
 int ToMin(int min);
@@ -99,6 +99,8 @@ int main()
 
     std::cout << "Sleep 3 sec" << std::endl;
     Sleep(ToSec(3));
+
+    
 
     for (;;)
     {
