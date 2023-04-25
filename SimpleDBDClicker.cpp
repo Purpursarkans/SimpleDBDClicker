@@ -1,11 +1,21 @@
+//!!!ONLY FOR 1920x1080p SCREEN!!!
+
+
 #include <iostream>
 #include <windows.h>
 
-const int HOST_ERROR_CLICK_X = 1014;
-const int HOST_ERROR_CLICK_Y = 450;
+const int CENTER_X = 1080/2;
+const int CENTER_Y = 1920/2;
 
-const int CONTINUE_X = 1290;
-const int CONTINUE_Y = 714;
+
+const int HOST_ERROR_CLICK_X = 1436;
+const int HOST_ERROR_CLICK_Y = 665;
+
+const int START_GAME_X = 1822;
+const int START_GAME_Y = 918;
+
+const int CONTINUE_X = 1822;
+const int CONTINUE_Y = 1012;
 
 const int RED = 100;
 const int GREEN = 10;
@@ -72,6 +82,18 @@ int ToMin(int min)
     return min * 60000;
 }
 
+void ClickColorCoord(int x, int y, int r, int g, int b, HWND hwnd, HDC hDC)
+{
+    if (FindColor(x, y, r, g, b, hDC))
+    {
+        SwitchToThisWindow(hwnd, true);
+        Sleep(ToSec(1));
+        LClickOnCoord(x, y);
+        //SetCursorPos(CENTER_X, CENTER_X);
+        Sleep(ToSec(1));
+    }
+}
+
 int main()
 {
     MoveWindow(GetConsoleWindow(), MOVE_CONSOLE_X, MOVE_CONSOLE_Y, CONSOLE_WIDTH, CONSOLE_HEIGHT, TRUE);
@@ -91,19 +113,15 @@ int main()
     HDC GameDC = GetDC(GameHWND);
 
     std::cout << "Sleep 3 sec" << std::endl;
-    Sleep(ToSec(3));
-
-    POINT P;
-    GetCursorPos(&P);
-    std::cout << "Cursor pos: x:" << P.x << " y:" << P.y << std::endl;
-
-    std::cout << "Sleep 3 sec" << std::endl;
-    Sleep(ToSec(3));
-
-    
+    Sleep(ToSec(3));    
 
     for (;;)
     {
+        ClickColorCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y, RED, GREEN, BLUE, GameHWND, GameDC);
+        ClickColorCoord(START_GAME_X, START_GAME_Y, RED, GREEN, BLUE, GameHWND, GameDC);
+        ClickColorCoord(CONTINUE_X, CONTINUE_Y, RED, GREEN, BLUE, GameHWND, GameDC);
+
+        /*
         if (FindColor(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y, RED, GREEN, BLUE, GameDC))
         {
             SwitchToThisWindow(GameHWND, true);
@@ -111,6 +129,15 @@ int main()
             LClickOnCoord(HOST_ERROR_CLICK_X, HOST_ERROR_CLICK_Y);
             Sleep(ToSec(1));
         }
+        
+        if (FindColor(START_GAME_X, START_GAME_Y, RED, GREEN, BLUE, GameDC))
+        {
+            SwitchToThisWindow(GameHWND, true);
+            Sleep(ToSec(1));
+            LClickOnCoord(START_GAME_X, START_GAME_Y);
+            Sleep(ToSec(1));
+        }
+
         if (FindColor(CONTINUE_X, CONTINUE_Y, RED, GREEN, BLUE, GameDC))
         {
             SwitchToThisWindow(GameHWND, true);
@@ -118,7 +145,10 @@ int main()
             LClickOnCoord(CONTINUE_X, CONTINUE_Y);
             Sleep(ToSec(1));
         }
+        */
         
     }
     system("pause");
 }
+
+
