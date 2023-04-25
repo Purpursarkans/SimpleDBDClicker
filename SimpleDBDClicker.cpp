@@ -86,7 +86,8 @@ void ClickColorCoord(int x, int y, int r, int g, int b, HWND hwnd, HDC hDC)
 {
     if (FindColor(x, y, r, g, b, hDC))
     {
-        SwitchToThisWindow(hwnd, true);
+        SwitchToThisWindow(hwnd, false);
+        SwitchToThisWindow(hwnd, true);   
         Sleep(ToSec(1));
         LClickOnCoord(x, y);
         //SetCursorPos(CENTER_X, CENTER_X);
